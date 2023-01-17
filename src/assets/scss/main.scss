@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: $primary-dark;
+}
+
+main#main {
+    display: flex;
+
+    #main_content {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+@import 'components/button';

@@ -1,0 +1,12 @@
+.base_button {
+    padding: 0.7rem 1rem;
+    border-radius: 1rem;
+    background-color: $secondary;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $secondary-light;
+    }
+}

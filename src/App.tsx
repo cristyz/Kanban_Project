@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { BaseHeader } from "./components/BaseHeader";
+import { BaseSidebar } from "./components/BaseSidebar";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { addTask } from "./store/task/slice";
 
@@ -16,13 +18,12 @@ function App() {
   };
 
   return (
-    <div>
-      <input type="text" value={task} onInput={onInputTask} />
-      <button onClick={onAddTask}>add</button>
-      {taskStore.tasks.map((task) => (
-        <div key={task}>{task}</div>
-      ))}
-    </div>
+    <main id="main">
+      <BaseSidebar />
+      <div id="main_content">
+        <BaseHeader />
+      </div>
+    </main>
   );
 }
 

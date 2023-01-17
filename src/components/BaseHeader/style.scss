@@ -1,0 +1,13 @@
+#base_header {
+    background-color: $primary;
+    width: 100%;
+    display: flex;
+    padding: 0 2rem;
+    height: 100px;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        color: #fff;
+    }
+}
