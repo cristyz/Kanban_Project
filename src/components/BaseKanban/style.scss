@@ -1,0 +1,58 @@
+#base_kanban {
+    height: calc(100vh - $header-height);
+    overflow: auto;
+
+    display: flex;
+    gap: 3rem;
+    padding: 2rem 0 0 2rem;
+}
+
+.base_kanban_list {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+
+        &__point {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: $secondary;
+        }
+
+        &__title {
+            color: $font-gray;
+            letter-spacing: 0.1rem;
+        }
+    }
+
+    &__item {
+        width: 100%;
+        // max-height: 250px;
+        background-color: $primary;
+        border-radius: 1rem;
+        cursor: pointer;
+
+        display: flex;
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+
+        &__title {
+            display: block;
+            color: #fff;
+            letter-spacing: 0.1rem;
+            font-size: 1.1rem;
+        }
+
+        &__substasks {
+            color: $font-gray;
+        }
+    }
+}

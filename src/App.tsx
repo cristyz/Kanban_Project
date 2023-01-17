@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BaseHeader } from "./components/BaseHeader";
+import { BaseKanban } from "./components/BaseKanban";
 import { BaseSidebar } from "./components/BaseSidebar";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { addTask } from "./store/task/slice";
@@ -22,6 +23,7 @@ function App() {
       <BaseSidebar />
       <div id="main_content">
         <BaseHeader />
+        <BaseKanban />
       </div>
     </main>
   );
