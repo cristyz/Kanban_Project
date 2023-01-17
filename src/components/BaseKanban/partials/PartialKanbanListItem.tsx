@@ -16,7 +16,7 @@ export function PartialKanbanListItem({
       <strong className="base_kanban_list__item__title">
         {kanbanItem.title}
       </strong>
-      <span className="base_kanban_list__item__substasks">
+      <span className="base_kanban_list__item__subtasks">
         {subtasksCompleted.length} of {kanbanItem.subtasks.length} subtasks
       </span>
     </div>

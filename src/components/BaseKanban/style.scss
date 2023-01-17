@@ -49,10 +49,13 @@
             color: #fff;
             letter-spacing: 0.1rem;
             font-size: 1.1rem;
+
+            user-select: none;
         }
 
-        &__substasks {
+        &__subtasks {
             color: $font-gray;
+            user-select: none;
         }
     }
 }
