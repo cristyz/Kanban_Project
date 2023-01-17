@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { taskSlice } from "./task/slice";
+import { kanbanSlice } from "./kanban/slice";
 
 const store = configureStore({
   reducer: {
-    task: taskSlice.reducer,
+    kanban: kanbanSlice.reducer,
   },
 });
 
