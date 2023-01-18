@@ -1,0 +1,44 @@
+.base_modal__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+
+    display: flex;
+
+    .base_modal {
+        width: 90%;
+        max-width: 500px;
+        background-color: $primary;
+        border-radius: 1rem;
+        padding: 1rem;
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+
+            &__title {
+                color: #fff;
+                padding: 0.4rem;
+            }
+
+            &__close {
+                color: #fff;
+                background-color: transparent;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 0.4rem;
+            }
+        }
+
+        &__body {
+            padding: 0.4rem;
+        }
+    }
+}

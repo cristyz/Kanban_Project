@@ -11,6 +11,7 @@ export interface KanbanBoard {
 export interface KanbanItem {
   id: number;
   title: string;
+  boardId: number;
   subtasks: KanbanSubtask[];
 }
 

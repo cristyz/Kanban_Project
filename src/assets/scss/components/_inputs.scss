@@ -1,0 +1,68 @@
+.base_select,
+.base_input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 0.3rem;
+    }
+
+    select,
+    input {
+        background-color: transparent;
+        border: 1px solid $font-gray-dark;
+        border-radius: 0.3rem;
+        padding: 0.75rem;
+        color: #fff;
+
+        &:focus {
+            outline: none;
+            border: 1px solid $secondary;
+        }
+
+        &::placeholder {
+            color: $font-gray;
+        }
+    }
+}
+
+.base_select__select {
+    .react_select {
+        &__control {
+            background-color: transparent;
+
+            &--is-focused {
+                border-color: $secondary !important;
+                box-shadow: 0 0 1px $secondary !important;
+            }
+        }
+
+        &__single-value {
+            color: #fff;
+        }
+
+        &__menu {
+            background-color: $primary-light;
+            border: 1px solid $font-gray-dark;
+            border-radius: 0.3rem;
+            box-shadow: none;
+        }
+
+        &__option {
+            color: #fff;
+
+            &--is-focused,
+            &--is-selected {
+                background-color: $secondary;
+            }
+
+            &:hover {
+                background-color: $secondary;
+            }
+        }
+    }
+}
