@@ -1,59 +1,27 @@
 import { KanbanState } from "./interface";
 
 export const initialKanbanState: KanbanState = {
+  projectSelectedId: 1,
+  projects: [
+    {
+      id: 1,
+      title: "Platform Launch",
+    },
+    {
+      id: 2,
+      title: "Marketing Plan",
+    },
+  ],
   boards: [
     {
       id: 1,
       title: "Todo",
-      // kanbanItens: [
-      //   {
-      //     id: 1,
-      //     boardId: 1,
-      //     title: "Build Ui for onboarding flow Build",
-      //     subtasks: [
-      //       {
-      //         id: 1,
-      //         title: "Subtask 1",
-      //         completed: false,
-      //       },
-      //     ],
-      //   },
-      // ],
+      projectId: 1,
     },
     {
       id: 2,
       title: "Done",
-      // kanbanItens: [
-      //   {
-      //     id: 2,
-      //     boardId: 2,
-      //     title: "Check if the user is logged",
-      //     subtasks: [
-      //       {
-      //         id: 2,
-      //         title: "Subtask 2",
-      //         completed: false,
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     id: 3,
-      //     title: "Fix the bug on the login screen",
-      //     boardId: 2,
-      //     subtasks: [
-      //       {
-      //         id: 3,
-      //         title: "Subtask 3",
-      //         completed: true,
-      //       },
-      //       {
-      //         id: 4,
-      //         title: "Subtask 4",
-      //         completed: false,
-      //       },
-      //     ],
-      //   },
-      // ],
+      projectId: 1,
     },
   ],
   kanbanItens: [

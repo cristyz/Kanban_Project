@@ -1,12 +1,19 @@
 export interface KanbanState {
+  projectSelectedId: number;
+  projects: KanbanProject[];
   boards: KanbanBoard[];
   kanbanItens: KanbanItem[];
+}
+
+export interface KanbanProject {
+  id: number;
+  title: string;
 }
 
 export interface KanbanBoard {
   id: number;
   title: string;
-  // kanbanItens: KanbanItem[];
+  projectId: number;
 }
 
 export interface KanbanItem {

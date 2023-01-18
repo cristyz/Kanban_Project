@@ -22,7 +22,6 @@ export const kanbanSlice = createSlice({
 });
 
 export const { addTask, moveKanbanItem } = kanbanSlice.actions;
-export const selectTask = (state: RootState) => state.kanban;
 export const selectOptions = (state: RootState): BaseSelectOptions[] => {
   return state.kanban.boards.map((board) => ({
     label: board.title,
