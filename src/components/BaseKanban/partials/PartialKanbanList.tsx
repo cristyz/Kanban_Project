@@ -1,3 +1,4 @@
+import { classNames as cn } from "../../../helpers/class-name";
 import { KanbanBoard, KanbanItem } from "../../../store/kanban/interface";
 import { PartialKanbanListHeader } from "./PartialKanbanListHeader";
 import { PartialKanbanListItem } from "./PartialKanbanListItem";
@@ -39,9 +40,9 @@ export function PartialKanbanList({ board }: PartialKanbanListProps) {
 
   return (
     <div
-      className={`base_kanban_list ${
-        isDragEnter && "base_kanban_list__drag_enter"
-      }`}
+      className={cn("base_kanban_list", {
+        base_kanban_list__drag_enter: isDragEnter,
+      })}
       onDrop={onDrop}
       onDragOver={(e) => e.preventDefault()}
       onDragEnter={() => setIsDragEnter(true)}
