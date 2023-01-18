@@ -19,12 +19,13 @@ nav {
         &_session {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.5rem;
 
             &__title {
                 display: block;
                 margin-left: 1rem;
                 color: $font-gray;
+                margin-bottom: 0.8rem;
             }
 
             &__item {
@@ -33,9 +34,17 @@ nav {
                 width: 80%;
                 border-top-right-radius: 1.2rem;
                 border-bottom-right-radius: 1.2rem;
+                cursor: pointer;
 
                 span {
                     color: $font-gray;
+                }
+
+                &:hover {
+                    background-color: $secondary-light;
+                    span {
+                        color: #fff;
+                    }
                 }
             }
 
