@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { KanbanItem } from "../../../store/kanban/interface";
 
 interface PartialKanbanListItemProps {
@@ -7,9 +8,11 @@ interface PartialKanbanListItemProps {
 export function PartialKanbanListItem({
   kanbanItem,
 }: PartialKanbanListItemProps) {
-  const subtasksCompleted = kanbanItem.subtasks.filter(
-    (subtask) => subtask.completed
+  const subtasksCompleted = useMemo(
+    () => kanbanItem.subtasks.filter((subtask) => subtask.completed),
+    [kanbanItem.subtasks]
   );
+
   function onDragStart(e: React.DragEvent<HTMLDivElement>) {
     e.dataTransfer.setData("text/plain", `${kanbanItem.id}`);
   }
