@@ -15,12 +15,15 @@ export function PartialAddNewTaskModal({ title, isOpenState }: BaseModalProps) {
     handleSubmit,
     control,
     formState: { errors },
+    reset,
   } = useForm();
   const dispatch = useAppDispatch();
+  const store = useAppSelector((state) => state);
+  const [_, setIsOpen] = isOpenState;
 
   const onSubmit = (data: any) => {
     const boardId = store.kanban.boards.find(
-      (board) => board.id == data.status.value
+      (board) => board.id == data.status?.value
     )?.id;
     if (!boardId) return console.error("Board not found");
 
@@ -32,8 +35,10 @@ export function PartialAddNewTaskModal({ title, isOpenState }: BaseModalProps) {
         title: data.title,
       })
     );
+
+    setIsOpen(false);
+    reset();
   };
-  const store = useAppSelector((state) => state);
 
   return (
     <BaseModal title={title} isOpenState={isOpenState}>
