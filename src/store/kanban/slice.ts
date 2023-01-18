@@ -9,16 +9,19 @@ export const kanbanSlice = createSlice({
   initialState: initialKanbanState,
   reducers: {
     addTask: (state, action: PayloadAction<KanbanItem>) => {
-      const { boardId } = action.payload;
-      const board = state.boards.find((board) => board.id === boardId);
-      if (board) {
-        board.kanbanItens.push(action.payload);
+      state.kanbanItens.push(action.payload);
+    },
+    moveKanbanItem: (state, action: PayloadAction<KanbanItem>) => {
+      const { id, boardId } = action.payload;
+      const item = state.kanbanItens.find((item) => item.id === id);
+      if (item) {
+        item.boardId = boardId;
       }
     },
   },
 });
 
-export const { addTask } = kanbanSlice.actions;
+export const { addTask, moveKanbanItem } = kanbanSlice.actions;
 export const selectTask = (state: RootState) => state.kanban;
 export const selectOptions = (state: RootState): BaseSelectOptions[] => {
   return state.kanban.boards.map((board) => ({

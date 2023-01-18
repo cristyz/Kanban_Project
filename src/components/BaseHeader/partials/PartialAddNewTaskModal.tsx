@@ -36,8 +36,8 @@ export function PartialAddNewTaskModal({ title, isOpenState }: BaseModalProps) {
       })
     );
 
-    setIsOpen(false);
-    reset();
+    // setIsOpen(false);
+    // reset();
   };
 
   return (

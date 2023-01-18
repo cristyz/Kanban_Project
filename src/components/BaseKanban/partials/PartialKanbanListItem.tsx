@@ -10,9 +10,12 @@ export function PartialKanbanListItem({
   const subtasksCompleted = kanbanItem.subtasks.filter(
     (subtask) => subtask.completed
   );
+  function onDragStart(e: React.DragEvent<HTMLDivElement>) {
+    e.dataTransfer.setData("text/plain", `${kanbanItem.id}`);
+  }
 
   return (
-    <div className="base_kanban_list__item">
+    <div className="base_kanban_list__item" draggable onDragStart={onDragStart}>
       <strong className="base_kanban_list__item__title">
         {kanbanItem.title}
       </strong>
