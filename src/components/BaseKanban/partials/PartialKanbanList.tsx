@@ -3,6 +3,7 @@ import { PartialKanbanListHeader } from "./PartialKanbanListHeader";
 import { PartialKanbanListItem } from "./PartialKanbanListItem";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { moveKanbanItem } from "../../../store/kanban/slice";
+import { useState } from "react";
 
 interface PartialKanbanListProps {
   board: KanbanBoard;
@@ -11,6 +12,8 @@ interface PartialKanbanListProps {
 export function PartialKanbanList({ board }: PartialKanbanListProps) {
   const kanbanStore = useAppSelector((state) => state.kanban);
   const dispatch = useAppDispatch();
+
+  const [isDragEnter, setIsDragEnter] = useState(false);
 
   const kanbanBoardItens = kanbanStore.kanbanItens.filter(
     (item) => item.boardId === board.id
@@ -30,13 +33,19 @@ export function PartialKanbanList({ board }: PartialKanbanListProps) {
         })
       );
     }
+
+    setIsDragEnter(false);
   }
 
   return (
     <div
-      className="base_kanban_list"
+      className={`base_kanban_list ${
+        isDragEnter && "base_kanban_list__drag_enter"
+      }`}
       onDrop={onDrop}
       onDragOver={(e) => e.preventDefault()}
+      onDragEnter={() => setIsDragEnter(true)}
+      onDragLeave={() => setIsDragEnter(false)}
     >
       <PartialKanbanListHeader
         title={board.title}
