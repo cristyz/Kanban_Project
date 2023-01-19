@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { loadReduxState, saveReduxState } from "../helpers/browser-storage";
+import { loadReduxState, saveReduxState } from "../helpers/redux-storage";
 import { kanbanSlice } from "./kanban/slice";
 
 const store = configureStore({
