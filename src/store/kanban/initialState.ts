@@ -29,6 +29,7 @@ export const initialKanbanState: KanbanState = {
       id: 1,
       boardId: 1,
       title: "Build Ui for onboarding flow Build",
+      position: 1,
       subtasks: [
         {
           id: 1,
@@ -41,6 +42,7 @@ export const initialKanbanState: KanbanState = {
       id: 2,
       boardId: 2,
       title: "Check if the user is logged",
+      position: 1,
       subtasks: [
         {
           id: 2,
@@ -52,6 +54,7 @@ export const initialKanbanState: KanbanState = {
     {
       id: 3,
       title: "Fix the bug on the login screen",
+      position: 2,
       boardId: 2,
       subtasks: [
         {
