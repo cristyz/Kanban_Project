@@ -17,8 +17,25 @@ export const kanbanSlice = createSlice({
     moveKanbanItemToNewBoard: (state, action: PayloadAction<KanbanItem>) => {
       const { id, boardId } = action.payload;
       const item = state.kanbanItens.find((item) => item.id === id);
-      if (item) {
-        item.boardId = boardId;
+      const oldBoard = state.boards.find((board) => board.id === item?.boardId);
+      const newBoard = state.boards.find((board) => board.id === boardId);
+
+      const oldBoardItens = state.kanbanItens.filter(
+        (item) => item.boardId === oldBoard?.id
+      );
+      const newBoardItens = state.kanbanItens.filter(
+        (item) => item.boardId === newBoard?.id
+      );
+      const itensInOldBoardWithPositionHigherThanItem = oldBoardItens.filter(
+        (itenInOldBoard) => itenInOldBoard.position > item!.position
+      );
+
+      if (item && oldBoard && newBoard && oldBoard.id !== newBoard.id) {
+        itensInOldBoardWithPositionHigherThanItem.forEach(
+          (item) => (item.position -= 1)
+        );
+        item.boardId = newBoard.id;
+        item.position = newBoardItens.length + 1;
       }
     },
   },
