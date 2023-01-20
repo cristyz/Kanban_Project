@@ -18,12 +18,10 @@
     &__drag_enter {
         .base_kanban_list__item {
 
-            .base_kanban_list__item__title,
-            .base_kanban_list__item__subtasks {
+            &__title,
+            &__subtasks {
                 pointer-events: none;
             }
-
-            opacity: 0.5;
         }
     }
 
@@ -48,7 +46,6 @@
 
     &__item {
         width: 100%;
-        // max-height: 250px;
         background-color: $primary;
         border-radius: 1rem;
         cursor: pointer;
@@ -70,6 +67,15 @@
         &__subtasks {
             color: $font-gray;
             user-select: none;
+        }
+
+        &__drag_enter {
+            background-color: $secondary;
+
+            .base_kanban_list__item__title,
+            .base_kanban_list__item__subtasks {
+                pointer-events: none;
+            }
         }
     }
 }

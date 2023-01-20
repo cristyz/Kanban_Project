@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import { classNames as cn } from "../../../helpers/class-name";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { KanbanItem } from "../../../store/kanban/interface";
 import {
@@ -15,6 +16,8 @@ export function PartialKanbanListItem({
 }: PartialKanbanListItemProps) {
   const kanbanStore = useAppSelector((state) => state.kanban);
   const dispatch = useAppDispatch();
+
+  const [isDragEnter, setIsDragEnter] = useState(false);
 
   const subtasksCompleted = useMemo(
     () => kanbanItem.subtasks.filter((subtask) => subtask.completed),
@@ -50,15 +53,21 @@ export function PartialKanbanListItem({
         })
       );
     }
+
+    setIsDragEnter(false);
   }
 
   return (
     <div
-      className="base_kanban_list__item"
+      className={cn("base_kanban_list__item", {
+        base_kanban_list__item__drag_enter: isDragEnter,
+      })}
       draggable
       onDragStart={onDragStart}
       onDrop={onDrop}
       onDragOver={(e) => e.preventDefault()}
+      onDragEnter={() => setIsDragEnter(true)}
+      onDragLeave={() => setIsDragEnter(false)}
     >
       <strong className="base_kanban_list__item__title">
         {kanbanItem.title}
