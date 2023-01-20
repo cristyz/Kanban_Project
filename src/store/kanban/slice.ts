@@ -14,7 +14,7 @@ export const kanbanSlice = createSlice({
     addTask: (state, action: PayloadAction<KanbanItem>) => {
       state.kanbanItens.push(action.payload);
     },
-    moveKanbanItem: (state, action: PayloadAction<KanbanItem>) => {
+    moveKanbanItemToNewBoard: (state, action: PayloadAction<KanbanItem>) => {
       const { id, boardId } = action.payload;
       const item = state.kanbanItens.find((item) => item.id === id);
       if (item) {
@@ -24,7 +24,7 @@ export const kanbanSlice = createSlice({
   },
 });
 
-export const { changeProjectSelectedId, addTask, moveKanbanItem } =
+export const { changeProjectSelectedId, addTask, moveKanbanItemToNewBoard } =
   kanbanSlice.actions;
 
 export const selectOptions = (state: RootState): BaseSelectOptions[] => {

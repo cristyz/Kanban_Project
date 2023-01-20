@@ -3,7 +3,7 @@ import { KanbanBoard, KanbanItem } from "../../../store/kanban/interface";
 import { PartialKanbanListHeader } from "./PartialKanbanListHeader";
 import { PartialKanbanListItem } from "./PartialKanbanListItem";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { moveKanbanItem } from "../../../store/kanban/slice";
+import { moveKanbanItemToNewBoard } from "../../../store/kanban/slice";
 import { useState } from "react";
 import orderBy from "lodash.orderby";
 
@@ -31,7 +31,7 @@ export function PartialKanbanList({ board }: PartialKanbanListProps) {
 
     if (!!kanbanItem) {
       dispatch(
-        moveKanbanItem({
+        moveKanbanItemToNewBoard({
           ...kanbanItem,
           boardId: board.id,
         })
