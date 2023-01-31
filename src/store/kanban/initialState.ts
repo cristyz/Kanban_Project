@@ -23,6 +23,11 @@ export const initialKanbanState: KanbanState = {
       title: "Done",
       projectId: 1,
     },
+    {
+      id: 3,
+      title: "New Board",
+      projectId: 2,
+    },
   ],
   kanbanItens: [
     {

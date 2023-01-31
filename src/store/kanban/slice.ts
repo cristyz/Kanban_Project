@@ -96,7 +96,19 @@ export const {
 } = kanbanSlice.actions;
 
 export const selectOptions = (state: RootState): BaseSelectOptions[] => {
-  return state.kanban.boards.map((board) => ({
+  const projectSelectedId = state.kanban.projectSelectedId;
+  if (!projectSelectedId) return [];
+
+  const project = state.kanban.projects.find(
+    (project) => project.id === projectSelectedId
+  );
+  if (!project) return [];
+
+  const boards = state.kanban.boards.filter(
+    (board) => board.projectId === project.id
+  );
+
+  return boards.map((board) => ({
     label: board.title,
     value: String(board.id),
   }));
