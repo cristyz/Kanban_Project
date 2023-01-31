@@ -25,14 +25,21 @@ export function PartialAddNewTaskModal({ title, isOpenState }: BaseModalProps) {
     const boardId = store.kanban.boards.find(
       (board) => board.id == data.status?.value
     )?.id;
+
+    const itensInBoard = store.kanban.kanbanItens.filter(
+      (task) => task.boardId == boardId
+    );
+    const lastPosition = itensInBoard[itensInBoard.length - 1]?.position ?? 1;
+
     if (!boardId) return console.error("Board not found");
 
     dispatch(
       addTask({
         boardId: boardId,
-        id: Math.floor(Math.random() * 1000),
+        id: Math.floor(Math.random() * 999999),
         subtasks: [],
         title: data.title,
+        position: lastPosition,
       })
     );
 
