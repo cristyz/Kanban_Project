@@ -70,7 +70,9 @@
         }
 
         &__drag_enter {
+            transform: scale(1.05);
             background-color: $secondary;
+            transition: all 0.2s ease-in-out;
 
             .base_kanban_list__item__title,
             .base_kanban_list__item__subtasks {
