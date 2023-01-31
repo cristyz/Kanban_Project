@@ -29,7 +29,8 @@ export function PartialAddNewTaskModal({ title, isOpenState }: BaseModalProps) {
     const itensInBoard = store.kanban.kanbanItens.filter(
       (task) => task.boardId == boardId
     );
-    const lastPosition = itensInBoard[itensInBoard.length - 1]?.position ?? 1;
+    const lastPosition =
+      (itensInBoard[itensInBoard.length - 1]?.position ?? 0) + 1;
 
     if (!boardId) return console.error("Board not found");
 
