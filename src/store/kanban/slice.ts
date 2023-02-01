@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { BaseSelectOptions } from "../../components/FormComponents/BaseSelect/BaseSelect";
+import { useAppDispatch } from "../hooks";
 import type { RootState } from "../index";
 import { initialKanbanState } from "./initialState";
 import { KanbanItem } from "./interface";
@@ -13,6 +14,18 @@ export const kanbanSlice = createSlice({
     },
     addTask: (state, action: PayloadAction<KanbanItem>) => {
       state.kanbanItens.push(action.payload);
+    },
+    updateTask: (state, action: PayloadAction<KanbanItem>) => {
+      const { id, title, description, boardId } = action.payload;
+      const item = state.kanbanItens.find((item) => item.id === id);
+      if (!item) return console.error("item not found");
+
+      item.title = title;
+      item.description = description;
+
+      if (item.boardId != boardId) {
+        kanbanSlice.caseReducers.moveKanbanItemToNewBoard(state, action);
+      }
     },
     moveKanbanItemToNewBoard: (state, action: PayloadAction<KanbanItem>) => {
       const { id, boardId } = action.payload;
@@ -84,15 +97,20 @@ export const kanbanSlice = createSlice({
       item.boardId = newBoardId;
       item.position = newItemPosition;
     },
+    setKanbanItemIdToEdit: (state, action: PayloadAction<number | null>) => {
+      state.setKanbanItemIdToEdit = action.payload;
+    },
   },
 });
 
 export const {
   changeProjectSelectedId,
   addTask,
+  updateTask,
   moveKanbanItemToNewBoard,
   changeKanbanItemPositionInSameBoard,
   changeKanbanItemPositionInDifferentBoard,
+  setKanbanItemIdToEdit,
 } = kanbanSlice.actions;
 
 export const selectOptions = (state: RootState): BaseSelectOptions[] => {

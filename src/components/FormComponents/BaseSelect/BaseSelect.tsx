@@ -21,6 +21,7 @@ export function BaseSelect({ id, label, options, control }: BaseSelectProps) {
         <div className="base_select">
           <label htmlFor={id}>{label}</label>
           <Select
+            value={field.value}
             options={options}
             onChange={field.onChange}
             className="base_select__select"

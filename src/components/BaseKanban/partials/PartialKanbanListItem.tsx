@@ -5,6 +5,7 @@ import { KanbanItem } from "../../../store/kanban/interface";
 import {
   changeKanbanItemPositionInDifferentBoard,
   changeKanbanItemPositionInSameBoard,
+  setKanbanItemIdToEdit,
 } from "../../../store/kanban/slice";
 
 interface PartialKanbanListItemProps {
@@ -52,6 +53,10 @@ export function PartialKanbanListItem({
     setIsDragEnter(false);
   }
 
+  function handleSetKanbanItemIdToEdit() {
+    dispatch(setKanbanItemIdToEdit(kanbanItem.id));
+  }
+
   return (
     <div
       className={cn("base_kanban_list__item", {
@@ -63,6 +68,7 @@ export function PartialKanbanListItem({
       onDragOver={(e) => e.preventDefault()}
       onDragEnter={() => setIsDragEnter(true)}
       onDragLeave={() => setIsDragEnter(false)}
+      onClick={handleSetKanbanItemIdToEdit}
     >
       <strong className="base_kanban_list__item__title">
         {kanbanItem.title}

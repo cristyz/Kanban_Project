@@ -1,5 +1,6 @@
 export interface KanbanState {
   projectSelectedId: number;
+  setKanbanItemIdToEdit: number | null;
   projects: KanbanProject[];
   boards: KanbanBoard[];
   kanbanItens: KanbanItem[];

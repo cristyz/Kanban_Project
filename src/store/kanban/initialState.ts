@@ -2,6 +2,7 @@ import { KanbanState } from "./interface";
 
 export const initialKanbanState: KanbanState = {
   projectSelectedId: 1,
+  setKanbanItemIdToEdit: null,
   projects: [
     {
       id: 1,
