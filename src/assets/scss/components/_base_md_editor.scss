@@ -1,0 +1,25 @@
+.base_md_editor {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 0.3rem;
+    }
+
+    &__editor {
+        height: 500px !important;
+        background-color: $primary;
+
+        .w-md-editor-toolbar,
+        .wmde-markdown {
+            background-color: $primary;
+            border: none;
+        }
+    }
+
+
+}

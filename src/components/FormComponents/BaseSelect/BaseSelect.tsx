@@ -15,7 +15,7 @@ export interface BaseSelectOptions {
 export function BaseSelect({ id, label, options, control }: BaseSelectProps) {
   return (
     <Controller
-      name="status"
+      name={id}
       control={control}
       render={({ field }) => (
         <div className="base_select">

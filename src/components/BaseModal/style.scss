@@ -13,10 +13,12 @@
 
     .base_modal {
         width: 90%;
-        max-width: 500px;
+        max-width: 800px;
+        height: 80vh;
         background-color: $primary;
         border-radius: 1rem;
         padding: 1rem;
+        overflow-y: auto;
 
         &__header {
             display: flex;

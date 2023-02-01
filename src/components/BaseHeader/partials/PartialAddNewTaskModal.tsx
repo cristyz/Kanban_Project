@@ -8,6 +8,8 @@ import {
 } from "../../FormComponents/BaseSelect/BaseSelect";
 import { addTask, selectOptions } from "../../../store/kanban/slice";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import MDEditor from "@uiw/react-md-editor";
+import { BaseMdEditor } from "../../FormComponents/BaseMdEditor";
 
 export function PartialAddNewTaskModal({ title, isOpenState }: BaseModalProps) {
   const {
@@ -39,18 +41,20 @@ export function PartialAddNewTaskModal({ title, isOpenState }: BaseModalProps) {
         boardId: boardId,
         id: Math.floor(Math.random() * 999999),
         title: data.title,
+        description: data.description,
         position: lastPosition,
       })
     );
 
-    // setIsOpen(false);
-    // reset();
+    setIsOpen(false);
+    reset();
   };
 
   return (
     <BaseModal title={title} isOpenState={isOpenState}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <BaseInput id="title" label="Title" register={register} />
+        <BaseMdEditor id="description" label="Description" control={control} />
         <BaseSelect
           id="status"
           label="Status"
