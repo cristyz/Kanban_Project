@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { classNames as cn } from "../../../helpers/class-name";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { KanbanItem } from "../../../store/kanban/interface";
@@ -18,11 +18,6 @@ export function PartialKanbanListItem({
   const dispatch = useAppDispatch();
 
   const [isDragEnter, setIsDragEnter] = useState(false);
-
-  const subtasksCompleted = useMemo(
-    () => kanbanItem.subtasks.filter((subtask) => subtask.completed),
-    [kanbanItem.subtasks]
-  );
 
   function onDragStart(e: React.DragEvent<HTMLDivElement>) {
     e.dataTransfer.setData("text/plain", `${kanbanItem.id}`);
@@ -72,9 +67,11 @@ export function PartialKanbanListItem({
       <strong className="base_kanban_list__item__title">
         {kanbanItem.title}
       </strong>
-      <span className="base_kanban_list__item__subtasks">
-        {subtasksCompleted.length} of {kanbanItem.subtasks.length} subtasks
-      </span>
+      {kanbanItem.description && (
+        <span className="base_kanban_list__item__description">
+          {`${kanbanItem.description?.slice(0, 20)}...`}
+        </span>
+      )}
     </div>
   );
 }

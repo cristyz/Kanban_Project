@@ -19,13 +19,7 @@ export interface KanbanBoard {
 export interface KanbanItem {
   id: number;
   title: string;
+  description?: string;
   boardId: number;
   position: number;
-  subtasks: KanbanSubtask[];
-}
-
-export interface KanbanSubtask {
-  id: number;
-  title: string;
-  completed: boolean;
 }

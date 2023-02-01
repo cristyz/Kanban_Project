@@ -19,7 +19,7 @@
         .base_kanban_list__item {
 
             &__title,
-            &__subtasks {
+            &__description {
                 pointer-events: none;
             }
         }
@@ -64,7 +64,7 @@
             user-select: none;
         }
 
-        &__subtasks {
+        &__description {
             color: $font-gray;
             user-select: none;
         }
@@ -75,7 +75,7 @@
             transition: all 0.2s ease-in-out;
 
             .base_kanban_list__item__title,
-            .base_kanban_list__item__subtasks {
+            .base_kanban_list__item__description {
                 pointer-events: none;
             }
         }

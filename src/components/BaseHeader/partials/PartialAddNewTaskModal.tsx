@@ -38,7 +38,6 @@ export function PartialAddNewTaskModal({ title, isOpenState }: BaseModalProps) {
       addTask({
         boardId: boardId,
         id: Math.floor(Math.random() * 999999),
-        subtasks: [],
         title: data.title,
         position: lastPosition,
       })
