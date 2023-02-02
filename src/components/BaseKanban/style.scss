@@ -13,8 +13,11 @@
     display: flex;
     gap: 2rem;
     padding: 2rem 0 0 2rem;
+    overflow-x: auto;
+    height: 100%;
 
     .base_kanban_list {
+        min-width: 300px;
         width: 300px;
         min-height: 100%;
         display: flex;
