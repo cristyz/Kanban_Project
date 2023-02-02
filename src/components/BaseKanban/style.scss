@@ -39,6 +39,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            min-height: 30px;
 
 
             &__point {
@@ -52,6 +53,24 @@
             &__task_quantity {
                 color: $font-gray;
                 letter-spacing: 0.1rem;
+                max-width: 70%;
+            }
+
+            &__remove_button {
+                display: none;
+                margin-left: auto;
+                cursor: pointer;
+                color: $font-gray;
+
+                &:hover {
+                    color: $secondary;
+                }
+            }
+
+            &:hover {
+                .base_kanban_list__header__remove_button {
+                    display: block;
+                }
             }
         }
 
@@ -60,6 +79,7 @@
             background-color: $primary;
             border-radius: 1rem;
             cursor: pointer;
+            position: relative;
 
             display: flex;
             padding: 1rem;
@@ -73,6 +93,7 @@
                 font-size: 1.1rem;
 
                 user-select: none;
+                padding-right: 1rem;
             }
 
             &__description {
@@ -88,6 +109,25 @@
                 .base_kanban_list__item__title,
                 .base_kanban_list__item__description {
                     pointer-events: none;
+                }
+            }
+
+            &__remove {
+                position: absolute;
+                top: .75rem;
+                right: 1.75rem;
+                cursor: pointer;
+                color: $font-gray;
+                display: none;
+
+                &:hover {
+                    color: $secondary;
+                }
+            }
+
+            &:hover {
+                .base_kanban_list__item__remove {
+                    display: block;
                 }
             }
         }

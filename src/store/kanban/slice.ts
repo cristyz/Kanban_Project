@@ -122,6 +122,54 @@ export const kanbanSlice = createSlice({
 
       board.title = title;
     },
+    removeBoard: (state, action: PayloadAction<KanbanBoard>) => {
+      const { id } = action.payload;
+      const board = state.boards.find((board) => board.id === id);
+      if (!board) return console.error("board not found");
+
+      const itensInBoard = state.kanbanItens.filter(
+        (item) => item.boardId === board.id
+      );
+      itensInBoard.forEach((item) => {
+        const index = state.kanbanItens.indexOf(item);
+        state.kanbanItens.splice(index, 1);
+      });
+
+      const index = state.boards.indexOf(board);
+      state.boards.splice(index, 1);
+    },
+    removeProject: (state, action: PayloadAction<KanbanProject>) => {
+      const { id } = action.payload;
+      const project = state.projects.find((project) => project.id === id);
+      if (!project) return console.error("project not found");
+
+      const boardsInProject = state.boards.filter(
+        (board) => board.projectId === project.id
+      );
+      boardsInProject.forEach((board) => {
+        kanbanSlice.actions.removeBoard(board);
+      });
+
+      const index = state.projects.indexOf(project);
+      state.projects.splice(index, 1);
+
+      if (state.projectSelectedId === project.id) state.projectSelectedId = 1;
+    },
+    removeKanbanItem: (state, action: PayloadAction<KanbanItem>) => {
+      const { id } = action.payload;
+      const item = state.kanbanItens.find((item) => item.id === id);
+      if (!item) return console.error("item not found");
+
+      const itensInBoardWithPositionHigherThanItem = state.kanbanItens.filter(
+        (item) => item.boardId === item.boardId && item.position > item.position
+      );
+      itensInBoardWithPositionHigherThanItem.forEach(
+        (item) => (item.position -= 1)
+      );
+
+      const index = state.kanbanItens.indexOf(item);
+      state.kanbanItens.splice(index, 1);
+    },
     updateProject: (state, action: PayloadAction<KanbanProject>) => {
       const { id, title } = action.payload;
       const project = state.projects.find((project) => project.id === id);
@@ -138,6 +186,9 @@ export const {
   createNewProject,
   createNewBoard,
   updateBoard,
+  removeBoard,
+  removeProject,
+  removeKanbanItem,
   updateProject,
   updateTask,
   moveKanbanItemToNewBoard,

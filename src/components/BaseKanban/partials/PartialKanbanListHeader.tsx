@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../../store/hooks";
 import { KanbanBoard } from "../../../store/kanban/interface";
-import { updateBoard } from "../../../store/kanban/slice";
+import { removeBoard, updateBoard } from "../../../store/kanban/slice";
 
 interface PartialKanbanListHeaderProps {
   board: KanbanBoard;
@@ -33,6 +33,13 @@ export function PartialKanbanListHeader({
       <span className="base_kanban_list__header__task_quantity">
         ({tasksQtd})
       </span>
+
+      <div
+        className="base_kanban_list__header__remove_button"
+        onClick={() => dispatch(removeBoard(board))}
+      >
+        &#10006;
+      </div>
     </div>
   );
 }

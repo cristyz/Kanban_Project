@@ -5,6 +5,7 @@ import { KanbanItem } from "../../../store/kanban/interface";
 import {
   changeKanbanItemPositionInDifferentBoard,
   changeKanbanItemPositionInSameBoard,
+  removeKanbanItem,
   setKanbanItemIdToEdit,
 } from "../../../store/kanban/slice";
 
@@ -70,6 +71,15 @@ export function PartialKanbanListItem({
       onDragLeave={() => setIsDragEnter(false)}
       onClick={handleSetKanbanItemIdToEdit}
     >
+      <span
+        className="base_kanban_list__item__remove"
+        onClick={(e) => {
+          e.stopPropagation();
+          dispatch(removeKanbanItem(kanbanItem));
+        }}
+      >
+        &#10006;
+      </span>
       <strong className="base_kanban_list__item__title">
         {kanbanItem.title}
       </strong>
