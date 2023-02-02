@@ -28,7 +28,8 @@ nav {
                 margin-bottom: 0.8rem;
             }
 
-            &__item {
+            &__item,
+            &__create_project_button {
                 padding: 0.7rem;
                 padding-left: 1rem;
                 width: 80%;
@@ -39,9 +40,12 @@ nav {
                 span {
                     color: $font-gray;
                 }
+            }
 
+            &__item {
                 &:hover {
                     background-color: $secondary-light;
+
                     span {
                         color: #fff;
                     }

@@ -1,82 +1,91 @@
 #base_kanban {
     min-height: calc(100vh - $header-height);
     overflow: auto;
+}
 
+.base_kanban__create_board_button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+.base_kanban__body {
     display: flex;
     gap: 2rem;
     padding: 2rem 0 0 2rem;
-}
 
-.base_kanban_list {
-    width: 300px;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-
-    &__drag_enter {
-        .base_kanban_list__item {
-
-            &__title,
-            &__description {
-                pointer-events: none;
-            }
-        }
-    }
-
-    &__header {
+    .base_kanban_list {
+        width: 300px;
+        min-height: 100%;
         display: flex;
-        align-items: center;
-        gap: 0.5rem;
-
-
-        &__point {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background-color: $secondary;
-        }
-
-        &__title {
-            color: $font-gray;
-            letter-spacing: 0.1rem;
-        }
-    }
-
-    &__item {
-        width: 100%;
-        background-color: $primary;
-        border-radius: 1rem;
-        cursor: pointer;
-
-        display: flex;
-        padding: 1rem;
         flex-direction: column;
         gap: 1rem;
-
-        &__title {
-            display: block;
-            color: #fff;
-            letter-spacing: 0.1rem;
-            font-size: 1.1rem;
-
-            user-select: none;
-        }
-
-        &__description {
-            color: $font-gray;
-            user-select: none;
-        }
+        padding: 1rem;
 
         &__drag_enter {
-            transform: scale(1.05);
-            background-color: $secondary;
-            transition: all 0.2s ease-in-out;
+            .base_kanban_list__item {
 
-            .base_kanban_list__item__title,
-            .base_kanban_list__item__description {
-                pointer-events: none;
+                &__title,
+                &__description {
+                    pointer-events: none;
+                }
+            }
+        }
+
+        &__header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+
+            &__point {
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: $secondary;
+            }
+
+            &__title,
+            &__task_quantity {
+                color: $font-gray;
+                letter-spacing: 0.1rem;
+            }
+        }
+
+        &__item {
+            width: 100%;
+            background-color: $primary;
+            border-radius: 1rem;
+            cursor: pointer;
+
+            display: flex;
+            padding: 1rem;
+            flex-direction: column;
+            gap: 1rem;
+
+            &__title {
+                display: block;
+                color: #fff;
+                letter-spacing: 0.1rem;
+                font-size: 1.1rem;
+
+                user-select: none;
+            }
+
+            &__description {
+                color: $font-gray;
+                user-select: none;
+            }
+
+            &__drag_enter {
+                transform: scale(1.05);
+                background-color: $secondary;
+                transition: all 0.2s ease-in-out;
+
+                .base_kanban_list__item__title,
+                .base_kanban_list__item__description {
+                    pointer-events: none;
+                }
             }
         }
     }

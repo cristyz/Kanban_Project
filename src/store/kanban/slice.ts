@@ -3,7 +3,7 @@ import { BaseSelectOptions } from "../../components/FormComponents/BaseSelect/Ba
 import { useAppDispatch } from "../hooks";
 import type { RootState } from "../index";
 import { initialKanbanState } from "./initialState";
-import { KanbanItem } from "./interface";
+import { KanbanBoard, KanbanItem, KanbanProject } from "./interface";
 
 export const kanbanSlice = createSlice({
   name: "kanban",
@@ -100,12 +100,45 @@ export const kanbanSlice = createSlice({
     setKanbanItemIdToEdit: (state, action: PayloadAction<number | null>) => {
       state.setKanbanItemIdToEdit = action.payload;
     },
+    createNewProject: (state) => {
+      const newProject = {
+        id: Math.floor(Math.random() * 999999),
+        title: "New Project",
+      };
+      state.projects.push(newProject);
+    },
+    createNewBoard: (state) => {
+      const newBoard = {
+        id: Math.floor(Math.random() * 999999),
+        title: "New Board",
+        projectId: state.projectSelectedId,
+      };
+      state.boards.push(newBoard);
+    },
+    updateBoard: (state, action: PayloadAction<KanbanBoard>) => {
+      const { id, title } = action.payload;
+      const board = state.boards.find((board) => board.id === id);
+      if (!board) return console.error("board not found");
+
+      board.title = title;
+    },
+    updateProject: (state, action: PayloadAction<KanbanProject>) => {
+      const { id, title } = action.payload;
+      const project = state.projects.find((project) => project.id === id);
+      if (!project) return console.error("project not found");
+
+      project.title = title;
+    },
   },
 });
 
 export const {
   changeProjectSelectedId,
   addTask,
+  createNewProject,
+  createNewBoard,
+  updateBoard,
+  updateProject,
   updateTask,
   moveKanbanItemToNewBoard,
   changeKanbanItemPositionInSameBoard,

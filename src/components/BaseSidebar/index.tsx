@@ -1,6 +1,9 @@
 import { classNames as cn } from "../../helpers/class-name";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { changeProjectSelectedId } from "../../store/kanban/slice";
+import {
+  changeProjectSelectedId,
+  createNewProject,
+} from "../../store/kanban/slice";
 import "./style.scss";
 
 export function BaseSidebar() {
@@ -13,7 +16,9 @@ export function BaseSidebar() {
 
       <div className="menu">
         <div className="menu_session">
-          <span className="menu_session__title">All boards (8)</span>
+          <span className="menu_session__title">
+            All Projects ({kanbanStore.projects.length})
+          </span>
 
           {kanbanStore.projects.map((project) => (
             <div
@@ -27,6 +32,12 @@ export function BaseSidebar() {
               <span>{project.title}</span>
             </div>
           ))}
+
+          <div 
+          className="menu_session__create_project_button"
+          onClick={() => dispatch(createNewProject())}>
+            <span>+ Create Project</span>
+          </div>
         </div>
       </div>
     </nav>

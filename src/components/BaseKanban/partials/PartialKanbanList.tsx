@@ -52,7 +52,7 @@ export function PartialKanbanList({ board }: PartialKanbanListProps) {
       onDragLeave={() => setIsDragEnter(false)}
     >
       <PartialKanbanListHeader
-        title={board.title}
+        board={board}
         tasksQtd={kanbanBoardItens.length}
       />
       {kanbanBoardItens.map((kanbanItem) => (
